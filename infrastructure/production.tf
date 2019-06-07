@@ -9,4 +9,12 @@ resource "aws_instance" "web" {
 	instance_type = "${var.aws_instance_type}"
 	security_groups = ["${var.aws_security_groups}"]
 	key_name = "${var.aws_key_name}"
+
+	tags = {
+		Name = "prod1"
+	}
+
+	lifecycle {
+		create_before_destroy = true
+	}
 }
